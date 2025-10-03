@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TP09.Models;
 using Newtonsoft.Json;
+using TP10.Models;
 
-namespace TP09.Models
+namespace TP10.Models
 {
     public class Respuesta
     {

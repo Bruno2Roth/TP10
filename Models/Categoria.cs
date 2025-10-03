@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TP09.Models;
+using TP10.Models;
 using Newtonsoft.Json;
 
-namespace TP09.Models
+namespace TP10.Models
 {
-    public class Categoría
+    public class Categoria
     {
-        //ver cual privado y cual público
+        //ver cual privado y cual publico
         [JsonProperty]
         public int ID { get; set; }
 
@@ -18,7 +18,7 @@ namespace TP09.Models
         [JsonProperty]
         public string Foto { get; set; }
 
-        public Categoría()
+        public Categoria()
         {
 
         }

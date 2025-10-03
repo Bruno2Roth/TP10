@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TP09.Models;
 using Newtonsoft.Json;
-
-namespace TP09.Models
+using TP10.Models;
+namespace TP10.Models
 {
     public class Pregunta
     {
@@ -13,7 +12,7 @@ namespace TP09.Models
         [JsonProperty]
         public int ID { get; set; }
         [JsonProperty]
-        public int IDCategoría { get; set; }
+        public int IDCategoria { get; set; }
         [JsonProperty]
         public string Enunciado { get; set; }
         [JsonProperty]

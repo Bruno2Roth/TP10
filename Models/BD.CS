@@ -1,34 +1,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TP09.Models;
+using TP10.Models;
 using Newtonsoft.Json;
+using Microsoft.Data.SqlClient;
+using Dapper;
 
-namespace TP09.Models
+namespace TP10.Models
 {
-    public class BD
+    public static class BD
     {
+        private static string _connectionString = "Server=localhost;Database=preguntadORT;Integrated Security=True;TrustServerCertificate=True;";
 
-        public List<Categoría> ObtenerCategorias()
+        public static List<Categoria> ObtenerCategorias()
         {
-            List<Categoría> cat = new List<Categoría>();
+            List<Categoria> cat = new List<Categoria>();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = "SELECT * FROM Categorías";
-                cat = connection.Query<Categoría>(query).ToList();
+                cat = connection.Query<Categoria>(query).ToList();
             }
             return cat;
         }
-        public List<Pregunta> ObtenerPreguntas(int Categoria)
+        public static List<Pregunta> ObtenerPreguntas(int Categoria)
         {
-            List<Pregunta> a = new List<Pregunta>();
-            return a;
+            List<Pregunta> preg = new List<Pregunta>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM Preguntas WHERE IDCategoría = @pCat";
+
+                if (Categoria == -1)
+                {
+                    query = "SELECT * FROM Preguntas";
+                }
+
+
+                preg = connection.Query<Pregunta>(query, new { pCat = Categoria }).ToList();
+
+            }
+
+            return preg;
         }
-        public List<Respuesta> ObtenerRespuestas(int idPregunta)
+        public static List<Respuesta> ObtenerRespuestas(int idPregunta)
         {
-            List<Respuesta> a = new List<Respuesta>();
-            return a;
+            List<Respuesta> ans = new List<Respuesta>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM Opciones WHERE IDPregunta = @pCat";
+                ans = connection.Query<Respuesta>(query, new { pCat = idPregunta }).ToList();
+
+            }
+
+            return ans;
         }
 
     }

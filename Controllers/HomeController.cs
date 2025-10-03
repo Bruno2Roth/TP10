@@ -17,4 +17,24 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult ConfigurarJuego()
+    {
+        return RedirectToAction("Jugar");
+    }
+    public IActionResult Comenzar(string username, int categoria)
+    {
+        return View("Juego");
+    }
+    public IActionResult Jugar()
+    {
+        return View("Juego");
+    }
+    [HttpPost]
+    public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
+    {
+        //
+
+        return View("Respuesta");
+    }
+
 }

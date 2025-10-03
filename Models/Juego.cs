@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TP09.Models;
+using TP10.Models;
 using Newtonsoft.Json;
 
-namespace TP09.Models
+
+namespace TP10.Models
 {
     public class Juego
     {
@@ -38,20 +39,42 @@ namespace TP09.Models
             ListaPreguntas = null;
             ListaRespuestas = null;
         }
-        public void ObtenerCategorias()
+        public List<string> ObtenerCategorias()
         {
-            return //ListaPreguntas.IDCategoria.Nombre;
+            List<string> AgregarC = new List<string>();
+            Categoria c = new Categoria();
+            for (int i = 0; i <= ListaPreguntas.Count(); i++)
+            {
+                if (AgregarC.Contains(c.Nombre))
+                {
+                    AgregarC.Add(c.Nombre);
+                }
+            }
+            return AgregarC;
         }
         public void CargarPartida(string username, int categoria)
         {
             InicializarJuego();
-            
-            BD bda =  HttpContext.Session.GetString("bd", new {});
-
-            bda.ObtenerPreguntas(categoria);
+            BD.ObtenerPreguntas(categoria);
         }
-        public void ObtenerProximaPregunta(){
+        public Pregunta ObtenerProximaPregunta()
+        {
             ContadorNroPreguntaActual++;
+            return PreguntaActual;
         }
+        public List<Respuesta> ObtenerProximasRespuestas(int IDPregunta)
+        {
+            List<Respuesta> ProximasRespuestas = BD.ObtenerRespuestas(IDPregunta);
+            return ProximasRespuestas;
+        }
+        public bool VerificarRespuesta(int IDRespuesta)
+        {
+            const int Ganar = 1;
+            PuntajeActual += Ganar;
+            ContadorNroPreguntaActual ++;
+            PreguntaActual = ListaPreguntas[ContadorNroPreguntaActual];
+            return IDRespuesta.Correcta;
+        }
+
     }
 }
