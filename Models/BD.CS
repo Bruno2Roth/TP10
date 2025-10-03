@@ -11,12 +11,14 @@ namespace TP09.Models
 
         public List<Categoría> ObtenerCategorias()
         {
+            List<Categoría> cat = new List<Categoría>();
+
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Usuarios WHERE Username = @Username";
-                return connection.QueryFirstOrDefault<Usuario>(query, new { Username = username });
+                string query = "SELECT * FROM Categorías";
+                cat = connection.Query<Categoría>(query).ToList();
             }
-            return a;
+            return cat;
         }
         public List<Pregunta> ObtenerPreguntas(int Categoria)
         {
