@@ -10,7 +10,7 @@ namespace TP09.Models
     {
         //ver cual privado y cual publico
         [JsonProperty]
-        public int IDRespuesta { get; set; }
+        public int ID { get; set; }
         [JsonProperty]
         public int IDPregunta { get; set; }
         [JsonProperty]

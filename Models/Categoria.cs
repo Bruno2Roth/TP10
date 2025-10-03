@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 
 namespace TP09.Models
 {
-    public class Categoria
+    public class Categoría
     {
-        //ver cual privado y cual publico
+        //ver cual privado y cual público
         [JsonProperty]
-        public int IDCategoria { get; set; }
+        public int ID { get; set; }
 
         [JsonProperty]
         public string Nombre { get; set; }
@@ -18,7 +18,7 @@ namespace TP09.Models
         [JsonProperty]
         public string Foto { get; set; }
 
-        public Categoria()
+        public Categoría()
         {
 
         }

@@ -11,9 +11,9 @@ namespace TP09.Models
 
         //ver cual privado y cual publico
         [JsonProperty]
-        public int IDPregunta { get; set; }
+        public int ID { get; set; }
         [JsonProperty]
-        public int IDCategoria { get; set; }
+        public int IDCategoría { get; set; }
         [JsonProperty]
         public string Enunciado { get; set; }
         [JsonProperty]
