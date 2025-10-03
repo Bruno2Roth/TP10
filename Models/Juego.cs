@@ -46,7 +46,7 @@ namespace TP09.Models
         {
             InicializarJuego();
             
-            BD bda =  HttpContext.Session.GetString("bd");
+            BD bda =  HttpContext.Session.GetString("bd", new {});
 
             bda.ObtenerPreguntas(categoria);
         }
