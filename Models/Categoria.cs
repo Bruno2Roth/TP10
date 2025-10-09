@@ -8,7 +8,6 @@ namespace TP10.Models
 {
     public class Categoria
     {
-        //ver cual privado y cual publico
         [JsonProperty]
         public int ID { get; set; }
 

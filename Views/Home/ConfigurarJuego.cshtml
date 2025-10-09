@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Configurar Juego";
+}
+
+<div>
+    
+    <form action="/Home/Comenzar" method="get">
+        
+        <h2>Nombre del jugador:</h2>
+        <input type="text" name="username" required />        
+
+        <div>
+            <h2>Dificultad:</h2>
+            <select name="dificultad" required>
+
+                @foreach(Categoria c in ViewBag.Categoria){
+
+                   <option value="@c.ID">@c</option>@</option>
+                }
+
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Comenzar</button>
+        </div>
+    
+    </form>
+
+</div>
