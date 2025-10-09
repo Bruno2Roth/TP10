@@ -17,22 +17,49 @@ public class HomeController : Controller
     {
         return View();
     }
+
     public IActionResult ConfigurarJuego()
     {
+
+        ViewBag.Categorías = BD.ObtenerCategorias();
+
         return RedirectToAction("Jugar");
     }
-    public IActionResult Comenzar(string username, int categoria)
+
+    public IActionResult Comenzar(string username, int categoría)
     {
+        Juego j = new Juego();
+        j.CargarPartida(username, categoría);
+
+        HttpContext.Session.SetString("Partida", Objeto.ObjectToString(j));
+
         return View("Juego");
     }
+
     public IActionResult Jugar()
     {
+        Juego j = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("Partida"));
+
+        if (j.verificarPreguntasRestantes())
+        {
+            return View("Fin");
+        }
+
+        Pregunta p = j.ObtenerProximaPregunta();
+        ViewBag.Pregunta = p;
+        ViewBag.Respuestas = j.ObtenerProximasRespuestas(p.ID);
+
+        HttpContext.Session.SetString("Partida", Objeto.ObjectToString(j));
+
         return View("Juego");
     }
+
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
     {
-        //
+        Juego j = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("Partida"));
+
+        ViewBag.Resultado = j.VerificarRespuesta(idRespuesta);
 
         return View("Respuesta");
     }

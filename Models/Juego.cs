@@ -9,7 +9,6 @@ namespace TP10.Models
 {
     public class Juego
     {
-        //ver cual privado y cual publico
         [JsonProperty]
         public string Username { get; set; }
         [JsonProperty]
@@ -29,9 +28,9 @@ namespace TP10.Models
         {
 
         }
-        private void InicializarJuego()
+        private void InicializarJuego(string n)
         {
-            Username = "";
+            Username = n;
             PuntajeActual = 0;
             CantidadPreguntasCorrectas = 0;
             ContadorNroPreguntaActual = 0;
@@ -54,12 +53,11 @@ namespace TP10.Models
         }
         public void CargarPartida(string username, int categoria)
         {
-            InicializarJuego();
+            InicializarJuego(username);
             BD.ObtenerPreguntas(categoria);
         }
         public Pregunta ObtenerProximaPregunta()
         {
-            ContadorNroPreguntaActual++;
             return PreguntaActual;
         }
         public List<Respuesta> ObtenerProximasRespuestas(int IDPregunta)
@@ -69,11 +67,34 @@ namespace TP10.Models
         }
         public bool VerificarRespuesta(int IDRespuesta)
         {
-            const int Ganar = 1;
-            PuntajeActual += Ganar;
-            ContadorNroPreguntaActual ++;
+            int Ganar = 1;
             PreguntaActual = ListaPreguntas[ContadorNroPreguntaActual];
-            return IDRespuesta.Correcta;
+
+            bool c = false;
+            foreach (Respuesta r in BD.ObtenerRespuestas(PreguntaActual.ID))
+            {
+                if (IDRespuesta == r.ID && r.Correcta == true)              //Era re facil pero bruno no sabe programar 
+                {
+                    PuntajeActual += Ganar;
+                    c = true;
+                    ContadorNroPreguntaActual++;
+
+                }
+
+            }
+            return c;
+        }
+
+        public bool verificarPreguntasRestantes()
+        {
+            bool a = true;
+
+            if (ListaPreguntas.Count() == ListaPreguntas.IndexOf(PreguntaActual) + 1)
+            {
+                a = false;
+            }
+
+            return a;
         }
 
     }
