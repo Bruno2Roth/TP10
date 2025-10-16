@@ -41,7 +41,7 @@ namespace TP10.Models
         public List<string> ObtenerCategorias()
         {
             List<string> AgregarC = new List<string>();
-            Categoría c = new Categoría();
+            Categoria c = new Categoria();
             for (int i = 0; i <= ListaPreguntas.Count(); i++)
             {
                 if (AgregarC.Contains(c.Nombre))

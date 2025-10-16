@@ -13,7 +13,7 @@
             <h2>Categorías:</h2>
             <select name="categoria" required>
 
-                @foreach(Categoría c in ViewBag.Categorias){
+                @foreach(Categoria c in ViewBag.Categorias){
 
                    <option value="@c.ID">@c.Nombre</option>
                 }

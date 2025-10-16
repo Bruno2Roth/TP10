@@ -20,8 +20,8 @@ public class HomeController : Controller
 
     public IActionResult ConfigurarJuego()
     {
-        List<Categoría> Cat = BD.ObtenerCategorias();
-        Categoría t = new Categoría("Todas");
+        List<Categoria> Cat = BD.ObtenerCategorias();
+        Categoria t = new Categoria("Todas");
         Cat.Add(t);
 
         ViewBag.Categorias = Cat;

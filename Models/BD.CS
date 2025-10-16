@@ -12,14 +12,14 @@ namespace TP10.Models
     {
         private static string _connectionString = "Server=localhost;Database=preguntadORT;Integrated Security=True;TrustServerCertificate=True;";
 
-        public static List<Categoría> ObtenerCategorias()
+        public static List<Categoria> ObtenerCategorias()
         {
-            List<Categoría> cat = new List<Categoría>();
+            List<Categoria> cat = new List<Categoria>();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = "SELECT * FROM Categorias";
-                cat = connection.Query<Categoría>(query).ToList();
+                cat = connection.Query<Categoria>(query).ToList();
             }
             return cat;
         }
@@ -29,7 +29,7 @@ namespace TP10.Models
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Preguntas WHERE IDCategoría = @pCat";
+                string query = "SELECT * FROM Preguntas WHERE IDCategoria = @pCat";
 
                 if (Categoria == -1)
                 {
