@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace TP10.Models
 {
-    public class Categoria
+    public class Categoría
     {
         [JsonProperty]
         public int ID { get; set; }
@@ -17,9 +17,15 @@ namespace TP10.Models
         [JsonProperty]
         public string Foto { get; set; }
 
-        public Categoria()
+        public Categoría()
         {
 
+        }
+
+        public Categoría(string nombre)
+        {
+            ID = -1;
+            Nombre = nombre;
         }
     }
 }

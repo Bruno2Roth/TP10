@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Juego";
+}
+
+<section>
+
+
+    <div>
+        <h2>@ViewBag.Nombre</h2>
+        <h3>Puntaje: @ViewBag.PuntajeActual</h3>
+    </div>
+
+    <div>
+        <h6>Pregunta @ViewBag.NumP</h6>
+
+        <p>@((ViewBag.Pregunta).Enunciado)</p>
+
+        <img src="@(ViewBag.Pregunta.Foto)" alt="AAA">
+
+    </div>
+
+    <form action="">
+
+        @foreach (Respuesta a in ViewBag.Respuestas)
+        {
+            <button type="submit" value="@(a.Opcion)">
+
+                @(a.Opcion)
+            
+            </button>
+        }
+
+    </form>
+
+
+</section>

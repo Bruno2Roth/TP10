@@ -41,7 +41,7 @@ namespace TP10.Models
         public List<string> ObtenerCategorias()
         {
             List<string> AgregarC = new List<string>();
-            Categoria c = new Categoria();
+            Categoría c = new Categoría();
             for (int i = 0; i <= ListaPreguntas.Count(); i++)
             {
                 if (AgregarC.Contains(c.Nombre))
@@ -54,7 +54,8 @@ namespace TP10.Models
         public void CargarPartida(string username, int categoria)
         {
             InicializarJuego(username);
-            BD.ObtenerPreguntas(categoria);
+            ListaPreguntas = BD.ObtenerPreguntas(categoria);
+            PreguntaActual = ListaPreguntas[0];
         }
         public Pregunta ObtenerProximaPregunta()
         {
@@ -73,7 +74,7 @@ namespace TP10.Models
             bool c = false;
             foreach (Respuesta r in BD.ObtenerRespuestas(PreguntaActual.ID))
             {
-                if (IDRespuesta == r.ID && r.Correcta == true)              //Era re facil pero bruno no sabe programar 
+                if (IDRespuesta == r.ID && r.Correcta == true)
                 {
                     PuntajeActual += Ganar;
                     c = true;
@@ -82,6 +83,7 @@ namespace TP10.Models
                 }
 
             }
+            
             return c;
         }
 

@@ -20,34 +20,42 @@ public class HomeController : Controller
 
     public IActionResult ConfigurarJuego()
     {
+        List<Categoría> Cat = BD.ObtenerCategorias();
+        Categoría t = new Categoría("Todas");
+        Cat.Add(t);
 
-        ViewBag.Categorías = BD.ObtenerCategorias();
+        ViewBag.Categorias = Cat;
 
-        return RedirectToAction("Jugar");
+        return View("ConfigurarJuego");
+
     }
 
-    public IActionResult Comenzar(string username, int categoría)
+    public IActionResult Comenzar(string username, int categoria)
     {
         Juego j = new Juego();
-        j.CargarPartida(username, categoría);
+        j.CargarPartida(username, categoria);
 
         HttpContext.Session.SetString("Partida", Objeto.ObjectToString(j));
 
-        return View("Juego");
+        return RedirectToAction("Jugar");
     }
 
     public IActionResult Jugar()
     {
         Juego j = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("Partida"));
 
-        if (j.verificarPreguntasRestantes())
-        {
-            return View("Fin");
-        }
+        ViewBag.Nombre = j.Username;
+        ViewBag.PuntajeActual = j.PuntajeActual;
+        ViewBag.NumP = j.ContadorNroPreguntaActual;
 
         Pregunta p = j.ObtenerProximaPregunta();
         ViewBag.Pregunta = p;
         ViewBag.Respuestas = j.ObtenerProximasRespuestas(p.ID);
+
+        if (j.verificarPreguntasRestantes())
+        {
+            return View("Fin");
+        }
 
         HttpContext.Session.SetString("Partida", Objeto.ObjectToString(j));
 
