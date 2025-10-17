@@ -18,7 +18,7 @@ namespace TP10.Models
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Categorias";
+                string query = "SELECT * FROM [Categorías]";
                 cat = connection.Query<Categoria>(query).ToList();
             }
             return cat;

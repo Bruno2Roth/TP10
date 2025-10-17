@@ -17,6 +17,7 @@ namespace TP10.Models
         public string Enunciado { get; set; }
         [JsonProperty]
         public string Foto { get; set; }
+        
         public Pregunta()
         {
 

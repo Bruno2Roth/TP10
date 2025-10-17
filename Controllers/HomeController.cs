@@ -62,12 +62,13 @@ public class HomeController : Controller
         return View("Jugar");
     }
 
-    [HttpPost]
+    [HttpGet]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
     {
         Juego j = Objeto.StringToObject<Juego>(HttpContext.Session.GetString("Partida"));
 
         ViewBag.Resultado = j.VerificarRespuesta(idRespuesta);
+        
 
         return View("Respuesta");
     }

@@ -1,36 +1,36 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+﻿        <!DOCTYPE html>
+        <html lang="es">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NombreProyecto</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</head>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>@ViewData["Title"] - NombreProyecto</title>
+            <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        </head>
 
-<body>
-    <header>
+        <body>
+            <header>
 
-        <nav>
-            <ul>
-                <li><a href="@Url.Action("Index", "Home")"><img src='~/img/Logo.jpg'></a></li>
-                <li><a href="@Url.Action("ConfigurarJuego", "Home")">Iniciar Juego</a></li>
-            </ul>            
-        </nav>
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")"><img src='~/img/Logo.jpg'></a></li>
+                        <li><a href="@Url.Action("ConfigurarJuego", "Home")">Iniciar Juego</a></li>
+                    </ul>            
+                </nav>
 
-    </header>
+            </header>
 
-    <main role="main">
-        @RenderBody()
-    </main>
+            <main role="main">
+                @RenderBody()
+            </main>
 
-    <footer>
-        &copy; @DateTime.Now.Year - TP10
-    </footer>
+            <footer>
+                &copy; @DateTime.Now.Year - TP10
+            </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/js/site.js"></script>
+            @await RenderSectionAsync("Scripts", required: false)
+        </body>
 
-</html>
+        </html>

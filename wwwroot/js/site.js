@@ -1,4 +1,17 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+    function opcionCorrecta(valPreg, numPreg){
 
-// Write your JavaScript code.
+        let i = document.getElementById("Opcion" + numPreg);
+
+        if (valPreg === "true") {
+            i.style.color = "green"
+        } else {
+            i.style.color = "red"
+
+        }
+
+        let a = document.getElementById("Continuar");
+
+        a.style.display = "inline-block"
+
+    }
