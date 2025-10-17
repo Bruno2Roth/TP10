@@ -21,12 +21,14 @@
 
     <form action="">
 
+        <input type="hidden" name="idPregunta" value="@ViewBag.Pregunta.ID" />
+
         @foreach (Respuesta a in ViewBag.Respuestas)
         {
-            <button type="submit" value="@(a.Opcion)">
+            <button type="submit" value="@(a.Opcion)" value="@a.ID">
 
-                @(a.Opcion)
-            
+                @(a.Contenido)
+
             </button>
         }
 

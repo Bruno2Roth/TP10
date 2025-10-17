@@ -33,7 +33,7 @@ namespace TP10.Models
             Username = n;
             PuntajeActual = 0;
             CantidadPreguntasCorrectas = 0;
-            ContadorNroPreguntaActual = 0;
+            ContadorNroPreguntaActual = 1;
             PreguntaActual = null;
             ListaPreguntas = null;
             ListaRespuestas = null;

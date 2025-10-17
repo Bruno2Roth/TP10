@@ -29,7 +29,7 @@ namespace TP10.Models
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Preguntas WHERE IDCategoria = @pCat";
+                string query = "SELECT * FROM Preguntas WHERE IDCategoría = @pCat";
 
                 if (Categoria == -1)
                 {

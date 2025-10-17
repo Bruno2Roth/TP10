@@ -52,14 +52,14 @@ public class HomeController : Controller
         ViewBag.Pregunta = p;
         ViewBag.Respuestas = j.ObtenerProximasRespuestas(p.ID);
 
-        if (j.verificarPreguntasRestantes())
+        if (!j.verificarPreguntasRestantes())
         {
             return View("Fin");
         }
 
         HttpContext.Session.SetString("Partida", Objeto.ObjectToString(j));
 
-        return View("Juego");
+        return View("Jugar");
     }
 
     [HttpPost]
